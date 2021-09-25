@@ -1,0 +1,2 @@
+rootProject.name = "KISHORI"
+include ':app'

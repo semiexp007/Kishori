@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "569725575678",
+    "project_id": "kishori-b1410",
+    "storage_bucket": "kishori-b1410.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569725575678:android:233a53947bb4373fb060af",
+        "android_client_info": {
+          "package_name": "com.uietsocial.kishori"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569725575678-f7d11jphp10vlatpn76g437sfv7f1lj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uietsocial.kishori",
+            "certificate_hash": "df5ad7469d56c6ba638f5a952a422984a08c7fff"
+          }
+        },
+        {
+          "client_id": "569725575678-he3qh435jvi3ekhu1n2kjlgvchiclv8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAySqhMw-SNLoBF0qAfspebVfuInwp6Fyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569725575678-he3qh435jvi3ekhu1n2kjlgvchiclv8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

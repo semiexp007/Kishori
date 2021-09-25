@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context=".LoginOptions">
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:elevation="12dp"
+        android:id="@+id/view2"
+        app:cardCornerRadius="200dp"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:id="@+id/imageView1"
+            android:src="@drawable/smallicon"
+            android:scaleType="centerCrop"/>
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/facultlogin"
+        android:layout_marginTop="100dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Faculty LogIn">
+
+    </Button>
+    <Button
+   android:id="@+id/studentlogin"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Student Login">
+
+    </Button>
+
+</LinearLayout>

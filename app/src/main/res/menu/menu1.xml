@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/members"
+        android:icon="@drawable/memb"
+        android:title="Members" />
+    <item
+        android:id="@+id/graph"
+        android:icon="@drawable/anyls"
+        android:title="Analysis" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/femapro"
+        android:title="Profile" />
+    <item
+        android:id="@+id/chats"
+        android:icon="@drawable/chats"
+        android:title="Chats" />
+</menu>

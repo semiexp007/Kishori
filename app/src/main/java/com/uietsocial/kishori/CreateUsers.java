@@ -86,7 +86,6 @@ public class CreateUsers extends AppCompatActivity {
                             Map userinfo=new HashMap();
                             userinfo.put("name",name);
                             userinfo.put("id",roll);
-
                             userinfo.put("profileImageUrl","default");
                             currentuserDb.updateChildren(userinfo);
                             Toast.makeText(CreateUsers.this,"Registration Successful !",Toast.LENGTH_SHORT).show();

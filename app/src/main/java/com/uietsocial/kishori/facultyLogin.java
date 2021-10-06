@@ -75,7 +75,7 @@ public class facultyLogin extends AppCompatActivity {
                                     }
                                     if(f==1)
                                     {
-                                        Intent intent=new Intent(facultyLogin.this, Home.class);
+                                        Intent intent=new Intent(facultyLogin.this, FacultyHome.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         intent.putExtra("usercat",usercat);
                                         startActivity(intent);
                                         finish();

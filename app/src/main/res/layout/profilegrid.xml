@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    app:cardCornerRadius="13dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
+    card_view:cardCornerRAdius="20dp">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:id="@+id/view2"
+            app:cardCornerRadius="200dp"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/imageViewprofilepicgrid"
+                android:src="@drawable/femapro"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/name"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:text="Akash madheshiya"
+                android:textSize="10dp"
+                android:textColor="#0C0C0C"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:id="@+id/id_no"
+                android:textAlignment="center"
+                android:text="CSJMA19001390007"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textSize="10dp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:id="@+id/issuecount"
+                android:textAlignment="center"
+                android:text="Issues solved :120"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textSize="12dp"
+                android:textColor="@color/teal_700"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

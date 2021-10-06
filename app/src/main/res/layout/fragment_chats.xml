@@ -4,12 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.chats"
-    android:background="@color/teal_700">
+
+    >
 
 
-    <TextView
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recHistory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:listitem="@layout/chat_history_profile"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

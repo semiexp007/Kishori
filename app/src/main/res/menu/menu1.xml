@@ -6,6 +6,10 @@
         android:icon="@drawable/memb"
         android:title="Members" />
     <item
+        android:id="@+id/chats"
+        android:icon="@drawable/chats"
+        android:title="Chats" />
+    <item
         android:id="@+id/graph"
         android:icon="@drawable/anyls"
         android:title="Analysis" />
@@ -13,8 +17,5 @@
         android:id="@+id/profile"
         android:icon="@drawable/femapro"
         android:title="Profile" />
-    <item
-        android:id="@+id/chats"
-        android:icon="@drawable/chats"
-        android:title="Chats" />
+
 </menu>

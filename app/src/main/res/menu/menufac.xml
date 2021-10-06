@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/student"
+        android:icon="@drawable/onlymeme"
+        android:title="Students" />
+    <item
+        android:id="@+id/chats2"
+        android:icon="@drawable/chats"
+        android:title="Chats" />
+    <item
+        android:id="@+id/graph2"
+        android:icon="@drawable/anyls"
+        android:title="Analysis" />
+    <item
+        android:id="@+id/profilefaculty"
+        android:icon="@drawable/fac"
+        android:title="Profile" />
+</menu>

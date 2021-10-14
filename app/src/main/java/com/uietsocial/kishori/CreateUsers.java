@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import papaya.in.sendmail.SendMail;
+
 public class CreateUsers extends AppCompatActivity {
     Button mregistration,mlogout;
     EditText memail,mname,mpassword,mroll;
@@ -87,8 +89,23 @@ public class CreateUsers extends AppCompatActivity {
                             userinfo.put("name",name);
                             userinfo.put("id",roll);
                             userinfo.put("profileImageUrl","default");
+                            userinfo.put("email",email);
+                            userinfo.put("status","Offline");
                             currentuserDb.updateChildren(userinfo);
                             Toast.makeText(CreateUsers.this,"Registration Successful !",Toast.LENGTH_SHORT).show();
+
+
+                            SendMail mail = new SendMail("csjmuprojectkishori@gmail.com", "Kishori@123",
+                                    memail.getText().toString(),
+                                    "Login password to Kishori app",
+                                    "Welcome to Kishori app .Now you can login into the app using valid email and given password :- "+mpassword.getText().toString()+ "." +System.getProperty("line.separator")+
+                                            "You should not share your password with anyone, including any students, faculty or staff. " +
+                                            " In situations where someone requires access to another individual’s protected resources, " +
+                                            "delegation of permission options should be explored ."+
+                                            " In case you lost your password contact our technical team "+System.getProperty("line.separator")+
+                                            System.getProperty("line.separator")+
+                                            System.getProperty("line.separator")+" Thank you"+System.getProperty("line.separator")+" Admin Kishori Team");
+                            mail.execute();
                             memail.setText("");
                             mname.setText("");
                             mroll.setText("");

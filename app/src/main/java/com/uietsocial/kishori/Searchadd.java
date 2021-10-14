@@ -93,7 +93,7 @@ public class Searchadd extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
 
-     finish();
+     startActivity(new Intent( Searchadd.this,Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         return super.onSupportNavigateUp();
     }
 

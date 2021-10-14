@@ -60,7 +60,7 @@ public class member extends Fragment {
                 for(DataSnapshot s1: snapshot.getChildren())
                 {
                     String name=s1.child("name").getValue().toString();
-                    String id=s1.child("roll").getValue().toString();
+                    String id=s1.child("id").getValue().toString();
                     String Url=s1.child("profileImageUrl").getValue().toString();
                     String uid=s1.getKey();
                     User user=new User(name,id,"0",Url,uid,null);
@@ -74,11 +74,6 @@ public class member extends Fragment {
 
             }
         });
-
-
-
-
-
 
 
         return v1;

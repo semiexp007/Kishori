@@ -28,6 +28,7 @@ import com.uietsocial.kishori.model.User2;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -45,21 +46,33 @@ public class chats2 extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_chats2, container, false);
 
-
-        recyclerView=view.findViewById(R.id.recycle_hischat);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         userList=new ArrayList<>();
-      muser=new ArrayList<User2>();
+        muser=new ArrayList<>();
+        recyclerView=view.findViewById(R.id.recycle_hischat);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+
+        recyclerView.setLayoutManager(manager);
+        recyclerView.hasFixedSize();
+        adapter=new HistUserAdopter2(muser,getContext(),false);
+        recyclerView.setAdapter(adapter);
+
         FirebaseMessaging.getInstance().subscribeToTopic(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reference=FirebaseDatabase.getInstance().getReference().child("chats");
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 userList.clear();
                 for(DataSnapshot snapshot1:snapshot.getChildren())
                 {
-                    Message message=snapshot1.getValue(Message.class);
+                    String recid=snapshot1.child("receiverId").getValue().toString();
+                    String sendId=snapshot1.child("senderId").getValue().toString();
+                    String MesId=snapshot1.getKey();
+                    String mess=snapshot1.child("message").getValue().toString();
+                    String read=snapshot1.child("read").getValue().toString();
+                    long timeStamp=snapshot1.child("timeStamp").getValue(long.class);
+
+                    Message message=new Message(mess,MesId,recid,sendId,timeStamp,read);
                     if(message.getSenderId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                     {
                         int f=0;
@@ -93,6 +106,8 @@ public class chats2 extends Fragment {
                     }
                 }
                 readChats();
+
+
             }
 
             @Override
@@ -104,18 +119,22 @@ public class chats2 extends Fragment {
     }
 
     private void readChats() {
+
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference();
-        ref.child("user").child("Student").addValueEventListener(new ValueEventListener() {
+        ref.child("user").child("Student").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 muser.clear();
+                boolean p=false;
                 for(DataSnapshot snapshot1:snapshot.getChildren())
                 {
                     String name=snapshot1.child("name").getValue().toString();
                     String profilepic=snapshot1.child("profileImageUrl").getValue().toString();
                     String uUid=snapshot1.getKey();
+                    String stat=snapshot1.child("status").getValue().toString();;
 
-                    User2 user=new User2(name,null,null,profilepic,uUid,null);
+
+                    User2 user=new User2(name,null,null,profilepic,uUid,stat);
 
 
                     for(String id:userList)
@@ -123,14 +142,12 @@ public class chats2 extends Fragment {
                         if(user.getUid().equals(id))
                         {
 
-                                muser.add(user);
+                            muser.add(user);
 
                         }
                     }
                 }
-                adapter=new HistUserAdopter2(muser,getContext());
-                recyclerView.setAdapter(adapter);
-
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -140,5 +157,6 @@ public class chats2 extends Fragment {
             }
         });
     }
+
 
 }

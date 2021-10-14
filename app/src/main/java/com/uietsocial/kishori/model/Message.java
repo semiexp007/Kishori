@@ -1,19 +1,22 @@
 package com.uietsocial.kishori.model;
 
 public class Message {
-    String message,messageId,senderId,ReceiverId;
+    String message,messageId,senderId,ReceiverId,read;
     private long timeStamp;
+
 
     public Message() {
     }
 
 
 
-    public Message(String message, String ReceiverId, String senderId, long timeStamp) {
+    public Message(String message,String messageId, String ReceiverId, String senderId, long timeStamp,String read) {
         this.message = message;
         this.ReceiverId = ReceiverId;
         this.senderId = senderId;
         this.timeStamp = timeStamp;
+        this.read=read;
+        this.messageId=messageId;
     }
 
     public String getMessage() {
@@ -54,4 +57,14 @@ public class Message {
     public void setReceiverId(String receiverId) {
         ReceiverId = receiverId;
     }
+    public String getRead() {
+        return read;
+    }
+
+    public void setRead(String  read) {
+        this.read = read;
+    }
+
+
+
 }

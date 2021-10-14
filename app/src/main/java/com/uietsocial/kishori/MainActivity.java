@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 }finally{
 
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    Intent intent =new Intent(MainActivity.this,LoginOptions.class);
+                    Intent intent =new Intent(MainActivity.this,studentLogin.class);
 
                     startActivity(intent);
                     finish();

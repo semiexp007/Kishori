@@ -1,7 +1,6 @@
 package com.uietsocial.kishori.fragments;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,11 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.uietsocial.kishori.GlideApp;
 import com.uietsocial.kishori.R;
 import com.uietsocial.kishori.adopter.IssueSolved;
 import com.uietsocial.kishori.adopter.IssueUnsolved;
 import com.uietsocial.kishori.SetProfilePic;
+import com.uietsocial.kishori.studentLogin;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +41,7 @@ public class profile extends Fragment {
 TextView mtotal,msolved,munsolved,mname,mroll;
 ImageView mprofileimage;
 CardView cardView;
-Button mEdit,msolvedbar,munsolvedbar;
+Button mEdit,msolvedbar,munsolvedbar,mlogout;
 RecyclerView r1,r2;
 IssueSolved adptersolved;
 IssueUnsolved adpterunsolved;
@@ -67,7 +65,7 @@ IssueUnsolved adpterunsolved;
        mroll=v.findViewById(R.id.roll);
        mprofileimage=v.findViewById(R.id.profilepic);
        mEdit=v.findViewById(R.id.edit);
-
+  mlogout=v.findViewById(R.id.logout);
        msolvedbar=v.findViewById(R.id.solveditem);
        munsolvedbar=v.findViewById(R.id.unsolveditem);
        mlistissue=new ArrayList<>();
@@ -127,14 +125,14 @@ IssueUnsolved adpterunsolved;
                 {
 
                     String name=snapshot.child("name").getValue().toString();
-                    String roll=snapshot.child("roll").getValue().toString();
+                    String roll=snapshot.child("id").getValue().toString();
                     String profileUrl=snapshot.child("profileImageUrl").getValue().toString();
                     mname.setText(name);
                     mroll.setText(roll);
                     if(!profileUrl.equals("default"))
                     {
 
-                        Glide.with(mprofileimage.getContext()).load(profileUrl).into(mprofileimage);
+                        Glide.with(profile.this).load(profileUrl).into(mprofileimage);
 
                     }
 
@@ -157,11 +155,22 @@ IssueUnsolved adpterunsolved;
         mEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(),SetProfilePic.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                Intent intent=new Intent(getContext(),SetProfilePic.class);
+                intent.putExtra("usercat","Student");
+                startActivity(intent);
+
+
             }
         });
 
-        //recycler views in profile page;
+       mlogout.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               FirebaseAuth.getInstance().signOut();
+               startActivity(new Intent(getContext(), studentLogin.class));
+               getActivity().finish();
+           }
+       });
 
 
 
@@ -276,15 +285,5 @@ IssueUnsolved adpterunsolved;
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        this.onCreate(null);
-    }
 
-    @Override
-    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
-        menu.findItem(R.id.addbtn).setVisible(true);
-        super.onPrepareOptionsMenu(menu);
-    }
 }

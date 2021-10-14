@@ -21,8 +21,6 @@
         <activity android:name=".CreateUsers" />
         <activity android:name=".AdminPanel" />
         <activity android:name=".studentLogin" />
-        <activity android:name=".facultyLogin" />
-        <activity android:name=".LoginOptions" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

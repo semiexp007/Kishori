@@ -14,8 +14,13 @@
         android:icon="@drawable/anyls"
         android:title="Analysis" />
     <item
+        android:id="@+id/news"
+        android:icon="@drawable/noticeboard"
+        android:title="Notices" />
+    <item
         android:id="@+id/profile"
         android:icon="@drawable/femapro"
         android:title="Profile" />
+
 
 </menu>

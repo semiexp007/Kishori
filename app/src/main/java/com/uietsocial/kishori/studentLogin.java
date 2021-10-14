@@ -42,7 +42,7 @@ public class studentLogin extends AppCompatActivity {
         vrauth=FirebaseAuth.getInstance();
         mlogin=findViewById(R.id.slogin);
         String usercat=getIntent().getStringExtra("UserCat");
-        DatabaseReference reference=database.getReference().child("user").child(usercat);
+        DatabaseReference reference=database.getReference().child("user").child("Student");
         mlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,15 +75,18 @@ public class studentLogin extends AppCompatActivity {
                                     }
                                     if(f==1)
                                     {
+
                                         Intent intent=new Intent(studentLogin.this, Home.class);
-                                        intent.putExtra("usercat",usercat);
+                                        intent.putExtra("usercat","Student");
                                         startActivity(intent);
-                                        finish();
+
                                     }
                                     else
                                     {
-                                        auth.signOut();
-                                        Toast.makeText(studentLogin.this, "You are not a Student", Toast.LENGTH_SHORT).show();
+                                        Intent intent=new Intent(studentLogin.this, FacultyHome.class);
+                                        intent.putExtra("usercat","Faculty");
+                                        startActivity(intent);
+
                                     }
                                 }
 

@@ -10,11 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.uietsocial.kishori.R;
 import com.uietsocial.kishori.model.Message;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MessageAdopter extends RecyclerView.Adapter{
@@ -54,7 +57,14 @@ final  int Item_sent=1;
             return Item_sent;
         }
         else
+        {
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("chats").child(message.getMessageId());
+            HashMap<String,Object>mp=new HashMap<>();
+            mp.put("read","true");
+
+            reference.updateChildren(mp);
             return Item_received;
+        }
 
 
 

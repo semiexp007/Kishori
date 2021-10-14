@@ -38,6 +38,7 @@ public class SetProfilePic extends AppCompatActivity {
  Button msave;
  String puri;
     Uri resultUri;
+    String usercat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,10 @@ public class SetProfilePic extends AppCompatActivity {
         setContentView(R.layout.activity_set_profile_pic);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         msetprofile=findViewById(R.id.profilepicset);
+        usercat=getIntent().getStringExtra("usercat");
         msave=findViewById(R.id.save);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference=database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profileImageUrl");
+        DatabaseReference reference=database.getReference().child("user").child(usercat).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("profileImageUrl");
       reference.addListenerForSingleValueEvent(new ValueEventListener() {
           @Override
           public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -103,7 +105,7 @@ public class SetProfilePic extends AppCompatActivity {
             Map newImage = new HashMap();
             newImage.put("profileImageUrl", uri.toString());
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference reference=database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            DatabaseReference reference=database.getReference().child("user").child(usercat).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
             reference.updateChildren(newImage);
             Toast.makeText(SetProfilePic.this,"Updated",Toast.LENGTH_SHORT).show();
 

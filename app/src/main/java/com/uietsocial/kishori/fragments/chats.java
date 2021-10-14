@@ -21,11 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.uietsocial.kishori.R;
 import com.uietsocial.kishori.adopter.HistUserAdopter;
+import com.uietsocial.kishori.adopter.HistUserAdopter2;
 import com.uietsocial.kishori.model.User;
 import com.uietsocial.kishori.model.Message;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -44,21 +46,33 @@ public class chats extends Fragment {
         View view =inflater.inflate(R.layout.fragment_chats, container, false);
 
         recyclerView=view.findViewById(R.id.recHistory);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+       // recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         userList=new ArrayList<>();
         muser=new ArrayList<>();
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+
+        recyclerView.setLayoutManager(manager);
+        recyclerView.hasFixedSize();
+        adapter=new HistUserAdopter(muser,getContext(),false);
+        recyclerView.setAdapter(adapter);
 
         FirebaseMessaging.getInstance().subscribeToTopic(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
 
         reference=FirebaseDatabase.getInstance().getReference().child("chats");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 userList.clear();
                 for(DataSnapshot snapshot1:snapshot.getChildren())
-                {
-                    Message message=snapshot1.getValue(Message.class);
+                { String recid=snapshot1.child("receiverId").getValue().toString();
+                    String sendId=snapshot1.child("senderId").getValue().toString();
+                    String MesId=snapshot1.getKey();
+                    String mess=snapshot1.child("message").getValue().toString();
+                    String read=snapshot1.child("read").getValue().toString();
+                    long timeStamp=snapshot1.child("timeStamp").getValue(long.class);
+
+                    Message message=new Message(mess,MesId,recid,sendId,timeStamp,read);
                     if(message.getSenderId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
                     {
                         int f=0;
@@ -81,14 +95,53 @@ public class chats extends Fragment {
                             if(s.equals(message.getSenderId()))
                             {
                                 f=1;
-                            }
+                             }
                         }
                         if(f==0){
                             userList.add(message.getSenderId());
                         }
                     }
                 }
-                readChats();
+
+                DatabaseReference ref=FirebaseDatabase.getInstance().getReference();
+                ref.child("user").child("Faculty").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        muser.clear();
+                        boolean p=false;
+                        for(DataSnapshot snapshot1:snapshot.getChildren())
+                        {
+
+                            String name=snapshot1.child("name").getValue().toString();
+                            String profilepic=snapshot1.child("profileImageUrl").getValue().toString();
+                            String uUid=snapshot1.getKey();
+                            String stat=snapshot1.child("status").getValue().toString();
+
+                            User user=new User(name,null,null,profilepic,uUid,stat);
+
+
+                            for(String id:userList)
+                            {
+                                if(user.getUid().equals(id))
+                                {
+
+                                    muser.add(user);
+
+                                }
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged();
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+                });
+
             }
 
             @Override
@@ -96,53 +149,12 @@ public class chats extends Fragment {
 
             }
         });
-
 
         return view;
     }
 
 
 
-    private void readChats() {
-        muser=new ArrayList<>();
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference();
-        ref.child("user").child("Faculty").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-               muser.clear();
-                for(DataSnapshot snapshot1:snapshot.getChildren())
-                {
-
-                    String name=snapshot1.child("name").getValue().toString();
-                    String profilepic=snapshot1.child("profileImageUrl").getValue().toString();
-                    String uUid=snapshot1.getKey();
-
-                    User user=new User(name,null,null,profilepic,uUid,null);
-
-
-                    for(String id:userList)
-                    {
-                        if(user.getUid().equals(id))
-                        {
-
-                                muser.add(user);
-
-                        }
-                    }
-                }
-                adapter=new HistUserAdopter(muser,getContext());
-                recyclerView.setAdapter(adapter);
-
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-            }
-        });
-    }
 
 
 

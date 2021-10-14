@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uietsocial.kishori.R;
@@ -81,8 +82,14 @@ FirebaseDatabase database;
            messageList.clear();
           for(DataSnapshot snapshot1:snapshot.getChildren())
           {
+              String recid=snapshot1.child("receiverId").getValue().toString();
+              String sendId=snapshot1.child("senderId").getValue().toString();
+              String MesId=snapshot1.getKey();
+              String mess=snapshot1.child("message").getValue().toString();
+              String read=snapshot1.child("read").getValue().toString();
+              long timeStamp=snapshot1.child("timeStamp").getValue(long.class);
 
-            Message message=snapshot1.getValue(Message.class);
+            Message message=new Message(mess,MesId,recid,sendId,timeStamp,read);
 
             if(message.getSenderId().equals(SUid)&& message.getReceiverId().equals(RUid) ||
                     message.getSenderId().equals(RUid)&& message.getReceiverId().equals(SUid))
@@ -104,11 +111,12 @@ FirebaseDatabase database;
         msendbutton.setOnClickListener(view -> {
             String messagetxt=messagebox.getText().toString();
             Date date=new Date();
-            Message message=new Message(messagetxt,RUid,SUid,date.getTime());
+            DatabaseReference ref= database.getReference().child("chats");
+            String msgkey=ref.push().getKey();
+            Message message=new Message(messagetxt,msgkey,RUid,SUid,date.getTime(),"false");
 
 
-          database.getReference().child("chats")
-                    .push().setValue(message).addOnSuccessListener(unused -> {
+            ref.child(msgkey).setValue(message).addOnSuccessListener(unused -> {
                         messagebox.setText("");
 
                         sendNotification(messagetxt);

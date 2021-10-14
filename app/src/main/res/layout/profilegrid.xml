@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     app:cardCornerRadius="13dp"
@@ -10,19 +11,20 @@
     app:cardUseCompatPadding="true"
     card_view:cardCornerRAdius="20dp">
     <LinearLayout
-
+  android:gravity="center"
+      android:layout_margin="10dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_margin="20dp"
             android:id="@+id/view2"
             app:cardCornerRadius="200dp"
             android:layout_centerHorizontal="true">
             <ImageView
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:id="@+id/imageViewprofilepicgrid"

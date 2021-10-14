@@ -58,6 +58,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+        implementation 'com.github.1902shubh:SendMail:1.0.0'
+    
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

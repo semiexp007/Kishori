@@ -10,16 +10,7 @@
     android:gravity="center"
 
     tools:context=".studentLogin">
-    <TextView
-        android:layout_margin="40dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student Login"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        android:textColor="#BA4260">
 
-    </TextView>
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -33,6 +24,16 @@
             android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center">
+            <TextView
+                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome To Kishori App"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#BA4260">
+
+            </TextView>
             <androidx.cardview.widget.CardView
                 android:layout_marginTop="10dp"
                 android:layout_width="150dp"
@@ -78,7 +79,16 @@
 
            </Button>
 
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/fingerprint"
+                android:layout_margin="20dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp">
+
+            </ImageView>
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
 

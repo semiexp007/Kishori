@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".postActivity">
+    <ImageView
+        android:layout_margin="20dp"
+        android:background="#F1EEEE"
+       android:layout_gravity="center"
+        android:id="@+id/img"
+        android:src="@drawable/gallary"
+        android:layout_width="350dp"
+        android:layout_height="300dp">
+
+    </ImageView>
+    <EditText
+        android:padding="10dp"
+        android:background="#F4F0F0"
+        android:layout_margin="20dp"
+        android:id="@+id/imgtext"
+        android:hint="# add comments here"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+    </EditText>
+    <Button
+        android:id="@+id/postButton"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:text="post"
+        android:layout_height="40dp">
+
+    </Button>
+
+</LinearLayout>

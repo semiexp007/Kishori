@@ -38,14 +38,15 @@ public class NoticeFragment extends Fragment {
                 String date = snapshot.child("date").getValue().toString();
 
                 String note = snapshot.child("note").getValue().toString();
-                mnotice.setText( System.getProperty("line.separator") + System.getProperty("line.separator") +
-                        "Date : " + date + System.getProperty("line.separator") +
+                mnotice.setText("Date : " + date + System.getProperty("line.separator") +
+                        System.getProperty("line.separator")+
                                 System.getProperty("line.separator")+
-                        "Dear students ," + System.getProperty("line.separator") + note+
+                        "Dear students ," + System.getProperty("line.separator") +
+                        System.getProperty("line.separator")+note+
                         System.getProperty("line.separator")+
                         System.getProperty("line.separator")+System.getProperty("line.separator")
                          + "Thank you" + System.getProperty("line.separator") +
-                        "Health Club.");
+                        "Health Club .");
             }
             }
 

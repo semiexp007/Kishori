@@ -56,8 +56,7 @@ IssueUnsolved adpterunsolved;
                              Bundle savedInstanceState) {
        View v=inflater.inflate(R.layout.fragment_profile, container, false);
        database=FirebaseDatabase.getInstance();
-       cardView=v.findViewById(R.id.mainboard);
-       cardView.setBackgroundColor(ContextCompat.getColor(getContext(), android.R.color.transparent));
+
        mtotal=v.findViewById(R.id.total);
        msolved=v.findViewById(R.id.solved);
        munsolved=v.findViewById(R.id.Unsolved);
@@ -167,7 +166,7 @@ IssueUnsolved adpterunsolved;
            @Override
            public void onClick(View view) {
                FirebaseAuth.getInstance().signOut();
-               startActivity(new Intent(getContext(), studentLogin.class));
+               startActivity(new Intent(getContext(), studentLogin.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
                getActivity().finish();
            }
        });

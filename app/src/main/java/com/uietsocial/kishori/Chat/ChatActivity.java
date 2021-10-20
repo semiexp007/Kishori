@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.VoiceInteractor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -51,6 +52,8 @@ FirebaseDatabase database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_chat);
         String name=getIntent().getStringExtra("Username");
         RUid=getIntent().getStringExtra("UserUid");
@@ -71,7 +74,9 @@ FirebaseDatabase database;
 
         messagebox.setBackgroundResource(android.R.color.transparent);
         messageadopter=new MessageAdopter(this,messageList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager manager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
+        manager.setStackFromEnd(true);
         recyclerView.setAdapter(messageadopter);
         database=FirebaseDatabase.getInstance();
 

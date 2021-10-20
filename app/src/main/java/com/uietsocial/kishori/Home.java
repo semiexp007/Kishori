@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -20,10 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.OnDisconnect;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
+import com.uietsocial.kishori.adopter.showpostAdapter;
 import com.uietsocial.kishori.fragments.NoticeFragment;
+import com.uietsocial.kishori.fragments.aboutFragment;
 import com.uietsocial.kishori.fragments.chats;
 import com.uietsocial.kishori.fragments.graph;
 import com.uietsocial.kishori.fragments.member;
+import com.uietsocial.kishori.fragments.postUpdateFragment;
 import com.uietsocial.kishori.fragments.profile;
 
 import java.lang.reflect.Member;
@@ -36,17 +40,19 @@ public class Home extends AppCompatActivity {
     FirebaseAuth auth;
     Fragment select;
     String usercat;
-
+    BottomNavigationView bottomNavigationView;
     Fragment selectedFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_home);
         usercat = getIntent().getStringExtra("usercat");
 
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnevigation);
+        bottomNavigationView = findViewById(R.id.bottomnevigation);
         bottomNavigationView.setSelectedItemId(R.id.graph);
         Fragment defaultFragment = new graph();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, defaultFragment).commit();
@@ -70,13 +76,14 @@ public class Home extends AppCompatActivity {
                         selectedFragment = new profile();
                         break;
                     case R.id.news:
-                        selectedFragment=new NoticeFragment();
+                        selectedFragment=new postUpdateFragment();
                         break;
 
                 }
 
                 select = selectedFragment;
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
                 return true;
             }
         });
@@ -103,12 +110,30 @@ public class Home extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.additem, menu);
         MenuItem menuItem = menu.findItem(R.id.issue);
+        MenuItem menuItem1=menu.findItem(R.id.notice);
+        MenuItem menuItem2=menu.findItem(R.id.about);
         menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
                 startActivity(new Intent(Home.this, Searchadd.class));
-                finish();
+                return true;
+            }
+        });
+        menuItem1.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NoticeFragment()).commit();
+                return true;
+            }
+        });
+
+        menuItem2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new aboutFragment()).commit();
+
                 return true;
             }
         });

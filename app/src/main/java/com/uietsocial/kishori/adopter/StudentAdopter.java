@@ -1,6 +1,7 @@
 package com.uietsocial.kishori.adopter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.uietsocial.kishori.R;
 import com.uietsocial.kishori.model.User;
+import com.uietsocial.kishori.showingStudentsProfile;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -49,6 +51,16 @@ public class StudentAdopter extends RecyclerView.Adapter<StudentAdopter.ViewHold
         {
             Glide.with(context).load(users.getProfilePicUrl()).into(holder.mprofilepicfac);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               Intent intent=new Intent(context, showingStudentsProfile.class);
+               intent.putExtra("UserUid",users.getUid());
+               intent.putExtra("Url",users.getProfilePicUrl());
+               context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -65,6 +77,7 @@ public class StudentAdopter extends RecyclerView.Adapter<StudentAdopter.ViewHold
             mroll=itemView.findViewById(R.id.id_no);
             Issuecount=itemView.findViewById(R.id.issuecount);
             mprofilepicfac=itemView.findViewById(R.id.imageViewprofilepicgrid);
+
         }
     }
 }

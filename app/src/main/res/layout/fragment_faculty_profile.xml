@@ -5,82 +5,207 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.facultyProfile">
-    <androidx.cardview.widget.CardView
-
-        android:layout_width="300dp"
-        android:layout_centerInParent="true"
-        android:layout_height="wrap_content">
-        <LinearLayout
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:foregroundGravity="center"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_margin="20dp"
-                android:id="@+id/view2"
-                app:cardCornerRadius="200dp"
-                android:layout_centerHorizontal="true">
-                <ImageView
-                    android:layout_height="200dp"
-                    android:layout_width="match_parent"
+            >
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/b1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/view2"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+
+                    app:cardCornerRadius="200dp">
+
+                    <ImageView
+                        android:id="@+id/faculpro"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pr2" />
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/namefc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Facaulty Name"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold">
+
+                </TextView>
+                <TextView
+
+                    android:id="@+id/role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Role"
+                    android:textAlignment="center"
+                    android:textSize="15dp"
+                    android:textStyle="bold">
+
+                </TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
                     android:layout_gravity="center"
-                    android:id="@+id/faculpro"
-                    android:src="@drawable/pr2"
-                    android:scaleType="centerCrop"/>
+                    android:orientation="horizontal"
+                    android:layout_height="40dp">
+
+                    <Button
+
+                        android:id="@+id/save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="edit">
+
+                    </Button>
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+
+                        app:cardCornerRadius="200dp">
+                        <ImageView
+                            android:id="@+id/post"
+                            android:layout_width="40dp"
+                            android:background="@color/black"
+                            android:src="@drawable/ic_baseline_add_24"
+                            android:layout_height="40dp">
+
+                        </ImageView>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <Button
+
+                        android:id="@+id/logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+
+                        android:text="LogOut">
+
+                    </Button>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                app:cardBackgroundColor="#00E91E63"
+                android:background="@drawable/backgrounchat"
+                android:layout_height="wrap_content">
+                <LinearLayout
+
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bottom"
+                    android:orientation="horizontal">
+
+                    <Button
+
+                        android:layout_width="0dp"
+                        android:text="Photos"
+                        android:textStyle="bold"
+                        android:textSize="17dp"
+
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:id="@+id/pics"
+
+                        style="?android:attr/buttonBarButtonStyle"/>
+
+                    <Button
+
+                        android:text="Texts"
+                        android:textStyle="bold"
+                        android:textSize="17dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:enabled="true"
+                        android:id="@+id/Texts"
+
+                        style="?android:attr/buttonBarButtonStyle"/>
+
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="@drawable/uni"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_gravity="center"
+                android:id="@+id/recpics"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/imagewalapost"
 
-            <TextView
-                android:id="@+id/namefc"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Facaulty Name"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:layout_margin="10dp">
+                >
 
-            </TextView>
+            </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/textposts">
 
-            <TextView
-
-                android:id="@+id/role"
-                android:text="Role"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textColor="#4CAF50"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="10dp">
-
-            </TextView>
-
-            <Button
-                android:id="@+id/save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:text="edit">
-
-            </Button>
-
-            <Button
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="LogOut">
-
-            </Button>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
 
 
 

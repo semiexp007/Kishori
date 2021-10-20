@@ -103,9 +103,9 @@ public class graph extends Fragment {
                             }
 
 
-                        BarDataSet barDataSet1 = new BarDataSet(barEntries1, "SOLVED");
+                        BarDataSet barDataSet1 = new BarDataSet(barEntries1, "UNSOLVED");
                         barDataSet1.setColor(Color.RED);
-                        BarDataSet barDataSet2 = new BarDataSet(barEntries2, "UNSOLVED");
+                        BarDataSet barDataSet2 = new BarDataSet(barEntries2, "SOLVED");
                         barDataSet2.setColor(Color.GREEN);
                         BarData data = new BarData(barDataSet1, barDataSet2);
                         barChart.setData(data);

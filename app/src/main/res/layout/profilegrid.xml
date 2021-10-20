@@ -3,16 +3,17 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
-
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     app:cardCornerRadius="13dp"
     app:cardElevation="10dp"
     app:cardUseCompatPadding="true"
-    card_view:cardCornerRAdius="20dp">
+   >
     <LinearLayout
   android:gravity="center"
-      android:layout_margin="10dp"
+
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -44,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:textStyle="bold"
                 android:text="Akash madheshiya"
-                android:textSize="10dp"
+                android:textSize="13dp"
                 android:textColor="#0C0C0C"
                 android:layout_height="wrap_content">
 
@@ -64,11 +65,11 @@
             <TextView
                 android:id="@+id/issuecount"
                 android:textAlignment="center"
-                android:text="Issues solved :120"
+                android:text=""
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
-                android:textSize="12dp"
-                android:textColor="@color/teal_700"
+                android:textSize="10dp"
+                android:textColor="#009688"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

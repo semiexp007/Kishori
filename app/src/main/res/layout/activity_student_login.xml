@@ -29,13 +29,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome To Kishori App"
-                android:textSize="20dp"
+                android:textSize="23dp"
                 android:textStyle="bold"
                 android:textColor="#BA4260">
 
             </TextView>
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:elevation="12dp"
@@ -50,6 +50,8 @@
                     android:scaleType="centerCrop"/>
             </androidx.cardview.widget.CardView>
             <EditText
+                android:nextFocusDown="@id/spassword"
+                android:defaultFocusHighlightEnabled="true"
                 android:id="@+id/semail"
                 android:hint="Enter your mail"
                 android:layout_marginTop="40dp"
@@ -58,7 +60,8 @@
 
             </EditText>
             <EditText
-
+                android:nextFocusDown="@id/slogin"
+                android:password="true"
                 android:id="@+id/spassword"
                 android:hint="Enter your password"
                 android:layout_marginTop="20dp"
@@ -70,7 +73,7 @@
 
 
                android:id="@+id/slogin"
-               android:layout_margin="10dp"
+               android:layout_margin="20dp"
                android:layout_width="wrap_content"
                android:layout_height="40dp"
                android:background="#BA4260"

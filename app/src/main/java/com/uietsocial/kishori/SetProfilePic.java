@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -43,6 +44,8 @@ public class SetProfilePic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_set_profile_pic);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         msetprofile=findViewById(R.id.profilepicset);
@@ -98,7 +101,7 @@ public class SetProfilePic extends AppCompatActivity {
 
         UploadTask uploadTask =firepath.putBytes(data);
         uploadTask.addOnFailureListener(exception -> {
-            finish();
+
 
             // Handle unsuccessful uploads
         }).addOnSuccessListener(taskSnapshot -> firepath.getDownloadUrl().addOnSuccessListener(uri -> {
@@ -109,7 +112,7 @@ public class SetProfilePic extends AppCompatActivity {
             reference.updateChildren(newImage);
             Toast.makeText(SetProfilePic.this,"Updated",Toast.LENGTH_SHORT).show();
 
-            finish();
+
 
 
         }));

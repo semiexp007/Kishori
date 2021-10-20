@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="40dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+                <androidx.cardview.widget.CardView
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="20dp"
+                    android:elevation="12dp"
+                    android:id="@+id/view2"
+                   app:cardCornerRadius="200dp"
+                    android:layout_centerHorizontal="true">
+                    <ImageView
+                        android:layout_height="50dp"
+                        android:layout_width="match_parent"
+
+                        android:id="@+id/userpic"
+                        android:src="@drawable/femapro"
+                        android:scaleType="centerCrop"/>
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="20dp"
+                        android:text="Akash"
+                        android:textStyle="bold"
+                        android:id="@+id/postedbyname">
+
+                    </TextView>
+                    <TextView
+                        android:text="2021/11/19"
+                        android:layout_width="150dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/postedondate">
+
+                    </TextView>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/postpic"
+                android:layout_gravity="center"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:src="@drawable/gallary"
+               >
+
+            </ImageView>
+            <TextView
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:id="@+id/postComment"
+               android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="this was text to test"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

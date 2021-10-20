@@ -1,30 +1,20 @@
 package com.uietsocial.kishori;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.widget.LinearLayout;
 
-import java.time.Instant;
-
-import static java.security.AccessController.getContext;
-
-public class MainActivity extends AppCompatActivity {
-
-    ConstraintLayout mclaout;
-
+public class s2 extends AppCompatActivity {
+ LinearLayout mclaout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_s2);
+        //final int splashTimeOut = 200;
 
-        mclaout=findViewById(R.id.splash);
+        mclaout=findViewById(R.id.splas);
         final int splashTimeOut = 200;
 
         Thread splashThread = new Thread(){
@@ -41,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 }finally{
 
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                    Intent intent =new Intent(MainActivity.this,s2.class);
+                    Intent intent =new Intent(s2.this,studentLogin.class);
 
                     startActivity(intent);
                     finish();
@@ -49,5 +39,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         splashThread.start();
+
+
+                   // startActivity(intent);
+                  //  finish();
+
     }
 }

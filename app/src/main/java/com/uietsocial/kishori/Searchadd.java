@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +43,7 @@ public class Searchadd extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchadd);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listIssue=new ArrayList<>();
@@ -93,7 +95,8 @@ public class Searchadd extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
 
-     startActivity(new Intent( Searchadd.this,Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    // startActivity(new Intent( Searchadd.this,Home.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        finish();
         return super.onSupportNavigateUp();
     }
 

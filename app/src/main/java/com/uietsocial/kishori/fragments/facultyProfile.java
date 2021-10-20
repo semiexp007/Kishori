@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,17 +24,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uietsocial.kishori.R;
 import com.uietsocial.kishori.SetProfilePic;
+import com.uietsocial.kishori.adopter.showfac_postAdopter;
+import com.uietsocial.kishori.model.Imagepost;
+import com.uietsocial.kishori.postActivity;
 import com.uietsocial.kishori.studentLogin;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class facultyProfile extends Fragment {
 
-    ImageView pro;
+    ImageView pro,mpost;
     TextView mname,mrole;
-    Button mlogout,msave;
+    Button mlogout,msave,mphoto,mtext;
   FirebaseAuth auth;
+  RecyclerView mrecphoto,mrecText;
+  ArrayList<Imagepost>imgpost;
+  showfac_postAdopter adopter;
+  String url;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,8 +52,18 @@ public class facultyProfile extends Fragment {
       auth=FirebaseAuth.getInstance();
       pro=view.findViewById(R.id.faculpro);
       mname=view.findViewById(R.id.namefc);
+      mpost=view.findViewById(R.id.post);
       mrole=view.findViewById(R.id.role);
       mlogout=view.findViewById(R.id.logout);
+      mphoto=view.findViewById(R.id.pics);
+      mtext=view.findViewById(R.id.Texts);
+      mrecphoto=view.findViewById(R.id.recpics);
+      mrecText=view.findViewById(R.id.recText);
+      imgpost=new ArrayList<>();
+      adopter=new showfac_postAdopter(getContext(),imgpost);
+     mrecphoto.setLayoutManager(new GridLayoutManager(getContext(),3));
+        mrecphoto.setHasFixedSize(true);
+     mrecphoto.setAdapter(adopter);
       msave=view.findViewById(R.id.save);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -55,7 +77,7 @@ public class facultyProfile extends Fragment {
                 {
                     String name=snapshot.child("name").getValue().toString();
                     String role=snapshot.child("id").getValue().toString();
-                    String url=snapshot.child("profileImageUrl").getValue().toString();
+                    url=snapshot.child("profileImageUrl").getValue().toString();
                     mname.setText(name);
                     mrole.setText(role);
                     if(!url.equals("default"))
@@ -88,14 +110,77 @@ public class facultyProfile extends Fragment {
                auth.signOut();
 
 
-               startActivity(new Intent(getContext(), studentLogin.class));
+               startActivity(new Intent(getContext(), studentLogin.class).setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY));
                getActivity().finish();
            }
        });
+        mrecphoto.setVisibility(View.VISIBLE);
+        mrecText.setVisibility(View.GONE);
+       mphoto.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               mrecphoto.setVisibility(View.VISIBLE);
+               mrecText.setVisibility(View.GONE);
+
+               mphoto.setBackgroundColor(getResources().getColor(R.color.purple_500));
+               mtext.setBackgroundColor(getResources().getColor(R.color.white));
+
+
+           }
+       });
+        mtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mrecphoto.setVisibility(View.GONE);
+                mrecText.setVisibility(View.VISIBLE);
+
+                mtext.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                mphoto.setBackgroundColor(getResources().getColor(R.color.white));
+            }
+        });
+        mpost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(getContext(), postActivity.class);
+                intent.putExtra("name",mname.getText().toString());
+                intent.putExtra("userImageUrl",url);
+                startActivity(intent);
+            }
+        });
+        posts();
 
         return view ;
     }
 
+    private void posts() {
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        reference.child("posts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+               imgpost.clear();
+                for(DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    String postedby=snapshot1.child("postedby").getValue().toString();
+                    String post=snapshot1.child("postImageUrl").getValue().toString();
+                    Imagepost img=new Imagepost(null,post,null,null,null,null);
+                    if(postedby.equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+                    {
+
+                        imgpost.add(img);
+                    }
+                }
+                adopter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
 
 
 }

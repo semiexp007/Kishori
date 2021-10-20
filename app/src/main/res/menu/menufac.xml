@@ -9,6 +9,10 @@
         android:icon="@drawable/chats"
         android:title="Chats" />
     <item
+        android:id="@+id/news"
+        android:icon="@drawable/noticeboard"
+        android:title="Posts" />
+    <item
         android:id="@+id/graph2"
         android:icon="@drawable/anyls"
         android:title="Analysis" />

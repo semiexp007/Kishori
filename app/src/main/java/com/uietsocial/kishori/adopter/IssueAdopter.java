@@ -49,7 +49,7 @@ public class IssueAdopter extends RecyclerView.Adapter<IssueAdopter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(Searchadd).inflate(R.layout.search_issue_item,parent,false);
-        return new ViewHolder(view);
+        return new IssueAdopter.ViewHolder(view);
     }
 
     @Override

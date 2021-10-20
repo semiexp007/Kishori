@@ -1,5 +1,6 @@
 package com.uietsocial.kishori.adopter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +20,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uietsocial.kishori.R;
+import com.uietsocial.kishori.fragments.profile;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class IssueUnsolved extends RecyclerView.Adapter<IssueUnsolved.ViewHolder> {
-    Context mcontext;
+   Context mcontext;
     List<String> mlistIssueun;
 
 
@@ -87,6 +89,7 @@ public class IssueUnsolved extends RecyclerView.Adapter<IssueUnsolved.ViewHolder
                             reference.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
+
 
                                 }
                             });

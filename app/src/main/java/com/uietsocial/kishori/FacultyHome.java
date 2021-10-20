@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -18,6 +19,7 @@ import com.uietsocial.kishori.fragments.chats2;
 import com.uietsocial.kishori.fragments.facultyProfile;
 import com.uietsocial.kishori.fragments.graph;
 import com.uietsocial.kishori.fragments.member;
+import com.uietsocial.kishori.fragments.postUpdateFragment;
 import com.uietsocial.kishori.fragments.profile;
 import com.uietsocial.kishori.fragments.student;
 
@@ -29,12 +31,16 @@ Fragment selected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+
         setContentView(R.layout.activity_faculty_home);
         FirebaseMessaging.getInstance().subscribeToTopic(FirebaseAuth.getInstance().getCurrentUser().getUid());
         usercat=getIntent().getStringExtra("usercat");
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomnevigationfac);
-        bottomNavigationView.setSelectedItemId(R.id.student);
-        Fragment defaultFragment=new student();
+        bottomNavigationView.setSelectedItemId(R.id.graph2);
+        Fragment defaultFragment = new graph();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2, defaultFragment).commit();
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected( MenuItem item) {
@@ -52,6 +58,9 @@ Fragment selected;
                         break;
                     case R.id.profilefaculty:
                         selectedFragment=new facultyProfile();
+                        break;
+                    case R.id.news:
+                        selectedFragment=new postUpdateFragment();
                         break;
 
                 }

@@ -7,7 +7,20 @@
         android:title="Add issues"
         app:showAsAction="ifRoom|collapseActionView"
         />
+    <item
+        android:id="@+id/notice"
+        android:icon="@drawable/ic_baseline_description_24"
+        android:title="NOTICE"
+        
+        app:showAsAction="ifRoom|collapseActionView"
+        />
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="Help"
 
+        app:showAsAction="ifRoom|collapseActionView"
+        />
 
 
 </menu>

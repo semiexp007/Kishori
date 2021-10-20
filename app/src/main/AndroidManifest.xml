@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.uietsocial.kishori">
 
-    <uses-permission android:name="android.permission.INTERNET">
+    <uses-permission android:name="android.permission.INTERNET" />
 
-    </uses-permission>
     <application
         android:name=".FirebaseData"
         android:allowBackup="true"
@@ -13,8 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KISHORI">
-        <activity android:name=".FacultyHome"></activity>
-        <activity android:name=".Chat.ChatActivity"></activity>
+        <activity android:name=".showingStudentsProfile"></activity>
+        <activity android:name=".postActivity" />
+        <activity
+            android:name=".s2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".FacultyHome" />
+        <activity android:name=".Chat.ChatActivity" />
         <activity android:name=".SetProfilePic" />
         <activity android:name=".Searchadd" />
         <activity android:name=".Home" />
@@ -24,7 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,8 +38,8 @@
 
         <service
             android:name=".Notification.MyFirebaseMessagingService"
-            android:exported="false"
-            android:directBootAware="true">
+            android:directBootAware="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -10,13 +10,14 @@
         android:icon="@drawable/chats"
         android:title="Chats" />
     <item
+        android:id="@+id/news"
+        android:icon="@drawable/noticeboard"
+        android:title="Posts" />
+    <item
         android:id="@+id/graph"
         android:icon="@drawable/anyls"
         android:title="Analysis" />
-    <item
-        android:id="@+id/news"
-        android:icon="@drawable/noticeboard"
-        android:title="Notices" />
+
     <item
         android:id="@+id/profile"
         android:icon="@drawable/femapro"

@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KISHORI">
-        <activity android:name=".showingStudentsProfile"></activity>
+        <activity android:name=".treatmets"></activity>
+        <activity android:name=".addTages" />
+        <activity android:name=".help" />
+        <activity android:name=".vcmessage" />
+        <activity android:name=".showingStudentsProfile" />
         <activity android:name=".postActivity" />
         <activity
             android:name=".s2"

@@ -78,9 +78,5 @@ public class member extends Fragment {
 
         return v1;
     }
-    @Override
-    public void onPrepareOptionsMenu(@NonNull @NotNull Menu menu) {
-        menu.findItem(R.id.addbtn).setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-    }
+
 }

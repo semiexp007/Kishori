@@ -61,7 +61,7 @@ public class HistUserAdopter extends RecyclerView.Adapter<HistUserAdopter.ViewHo
         holder.mstatus.setText(users.getStatus());
 
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("chats");
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 for(DataSnapshot s2:snapshot.getChildren())
@@ -79,7 +79,7 @@ public class HistUserAdopter extends RecyclerView.Adapter<HistUserAdopter.ViewHo
                 }
                 else
                 {
-                    holder.mread.setVisibility(View.INVISIBLE);
+                    holder.mread.setVisibility(View.GONE);
                 }
             }
 

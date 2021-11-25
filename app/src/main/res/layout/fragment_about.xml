@@ -1,14 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     tools:context=".fragments.aboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:gravity="center"
+        android:orientation="vertical">
 
-</FrameLayout>
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+
+                android:src="@drawable/vinay">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prof. Vinay Kumar Pathak"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Vice chancellor"
+                android:textColor="@color/purple_700"
+                android:textSize="15dp"
+                android:textStyle="bold">
+
+            </TextView>
+            <Button
+                android:layout_marginBottom="20dp"
+                android:id="@+id/vcmessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLICK HERE FOR  V.C'S MESSAGE">
+
+            </Button>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:padding="5dp"
+            android:text="For any query related to app or you want to add issues not mentioned in issues section then click on the button below
+and send your query to us. Our technical team will contact you through email within 24 hours."
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            android:textSize="12dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/helpform"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:outlineAmbientShadowColor="@color/white"
+            android:text="Help"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/white">
+
+        </Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text=" Technical Team "
+            android:textAlignment="center"
+            android:textColor="@color/purple_700"
+            android:textSize="25dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:scaleType="fitEnd"
+
+            android:src="@drawable/akash2">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Akash Madheshiya"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Android Lead"
+            android:textColor="@color/purple_700"
+            android:textSize="15dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+
+            android:src="@drawable/yaman"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yaman Kain"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="UI/UX Lead"
+            android:textColor="@color/purple_700"
+            android:textSize="15dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:scaleType="fitEnd"
+  android:src="@drawable/aish"
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aishwaray Rudra chaturvedi"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Android support"
+            android:textColor="@color/purple_700"
+            android:textSize="15dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/shuryanash"
+
+            >
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Suryansh Pratap Singh"
+            android:textColor="@color/purple_700"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+
+            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Technical Lead"
+            android:textColor="@color/purple_700"
+            android:textSize="15dp"
+            android:textStyle="bold">
+
+        </TextView>
+            <TextView
+                android:padding="10dp"
+                android:text="©akmadheshiya for any support contact us through mail - projectkishori07@gmail.com "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

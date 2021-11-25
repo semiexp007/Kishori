@@ -29,6 +29,16 @@
 
             </TextView>
             <ImageView
+                android:id="@+id/treatunsolved"
+                android:visibility="invisible"
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/treatmenticon">
+
+            </ImageView>
+            <ImageView
                 android:paddingRight="10dp"
                 android:id="@+id/done"
                 android:layout_width="wrap_content"

@@ -28,6 +28,16 @@
                 android:layout_height="match_parent">
 
             </TextView>
+            <ImageView
+                android:id="@+id/treatsolved"
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"
+                android:src="@drawable/treatmenticon">
+
+            </ImageView>
            <TextView
                android:id="@+id/counter"
                android:paddingRight="10dp"

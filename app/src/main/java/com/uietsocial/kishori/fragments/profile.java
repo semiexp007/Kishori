@@ -49,7 +49,8 @@ IssueUnsolved adpterunsolved;
     private List<String> mlistissue;
     private List<String> mCount;
     private List<String> mlistissueun;
-
+    private List<String> t;
+    private List<String>t2;
     int ans=0,sol=0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,16 +71,16 @@ IssueUnsolved adpterunsolved;
        mlistissue=new ArrayList<>();
        mCount=new ArrayList<>();
        mlistissueun=new ArrayList<>();
-
-
+       t=new ArrayList<>();
+        t2=new ArrayList<>();
        r1=v.findViewById(R.id.recsolveditem);
        r2=v.findViewById(R.id.recunsolveditem);
         r1.setHasFixedSize(true);
         r1.setLayoutManager(new LinearLayoutManager(getContext()));
-        adptersolved=new IssueSolved(getContext(), mlistissue, mCount);
+        adptersolved=new IssueSolved(getContext(), mlistissue, mCount,t2);
         r1.setAdapter(adptersolved);
         r2.setLayoutManager(new LinearLayoutManager(getContext()));
-        adpterunsolved=new IssueUnsolved(getContext(), mlistissueun);
+        adpterunsolved=new IssueUnsolved(getContext(), mlistissueun,t);
         r2.setAdapter(adpterunsolved);
 
 
@@ -178,24 +179,24 @@ IssueUnsolved adpterunsolved;
     }
 
     private void readTotalUsolved() {
-        DatabaseReference ref2=database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Solved");
-        ref2.addValueEventListener(new ValueEventListener() {
+        DatabaseReference ref2=database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Issue");
+        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 int t=0;
-                for(DataSnapshot sp: snapshot.getChildren())
-                {
-                    String data=sp.getValue().toString();
-                    int  i=Integer.parseInt(data);
-                    t+=i;
+                if(snapshot.exists()) {
+                    for (DataSnapshot sp : snapshot.getChildren()) {
+                        String data = sp.child("Value").getValue().toString();
+                        int i = Integer.parseInt(data);
+                        t += i;
+                    }
                 }
-
-                String b=Integer.toString(ans+t);
+                String b=Integer.toString(t+ans);
                 String c=Integer.toString(ans);
                 mtotal.setText(b);
-                msolved.setText(Integer.toString(t));
+                msolved.setText(c);
 
-                munsolved.setText(c);
+                munsolved.setText(Integer.toString(t));
 
             }
 
@@ -207,16 +208,17 @@ IssueUnsolved adpterunsolved;
     }
 
     private void readTotal() {
-        DatabaseReference ref = database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Issue");
+        DatabaseReference ref = database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Solved");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 int t=0,sol=0;
-                for(DataSnapshot sp: snapshot.getChildren())
-                {
-                    String data=sp.getValue().toString();
-                    int  i=Integer.parseInt(data);
-                    t+=i;
+                if(snapshot.exists()) {
+                    for (DataSnapshot sp : snapshot.getChildren()) {
+                        String data = sp.child("Value").getValue().toString();
+                        int i = Integer.parseInt(data);
+                        t += i;
+                    }
                 }
                 ans=t;
             }
@@ -237,18 +239,38 @@ IssueUnsolved adpterunsolved;
         ref5.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                mlistissueun.clear();
-                for (DataSnapshot s1 : snapshot.getChildren()) {
-                    String name = s1.getKey();
-                    String c = s1.getValue().toString();
-                    String c2;
 
-                    if(!c.equals("0")){
-                        mlistissueun.add(name);
+                if(snapshot.exists()) {
+                    mlistissueun.clear();
+                    t.clear();
+                    for (DataSnapshot s1 : snapshot.getChildren()) {
+                        String name = s1.getKey();
+                        String c = s1.child("Value").getValue().toString();
+                        String c2;
+
+                        if (!c.equals("0")) {
+                            mlistissueun.add(name);
+                            DatabaseReference ref5 = database.getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Issue");
+                            ref5.child(name).child("Tags").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                                        String k = snapshot1.getValue().toString();
+                                        if (!k.equals("0")) {
+                                            t.add(snapshot1.getKey());
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+
+
                     }
-
-
-
                 }
                 adpterunsolved.notifyDataSetChanged();
             }
@@ -267,12 +289,32 @@ IssueUnsolved adpterunsolved;
         ref4.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                mlistissue.clear();
-                for (DataSnapshot s1 : snapshot.getChildren()) {
-                    String name = s1.getKey();
-                    String c = s1.getValue().toString();
-                    mlistissue.add(name);
-                    mCount.add(c);
+                if(snapshot.exists()) {
+                    mlistissue.clear();
+                    t2.clear();
+                    for (DataSnapshot s1 : snapshot.getChildren()) {
+                        String name = s1.getKey();
+                        String c = s1.child("Value").getValue().toString();
+                        if (!c.equals("0")) {
+                            mlistissue.add(name);
+                            mCount.add(c);
+                            DatabaseReference dbref = FirebaseDatabase.getInstance().getReference().child("user").child("Student").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Solved").child(name)
+                                    .child("Tags");
+                            dbref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                                        t2.add(snapshot1.getKey());
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+                    }
                 }
                 adptersolved.notifyDataSetChanged();
             }

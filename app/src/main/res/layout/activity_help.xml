@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/backgrounchat"
+    tools:context=".help">
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:text="HELPDESK">
+
+    </TextView>
+    <EditText
+
+        android:layout_marginBottom="10dp"
+        android:id="@+id/messemail"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:hint="Enter your mail"
+        android:background="@color/white"
+        android:layout_height="50dp">
+
+    </EditText>
+    <EditText
+        android:padding="5dp"
+        android:background="@color/white"
+        android:id="@+id/emailmessage"
+        android:textAlignment="textStart"
+        android:hint="Write your message here"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+    </EditText>
+    <Button
+        android:layout_margin="20dp"
+        android:id="@+id/sendus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="send"
+>
+
+    </Button>
+</LinearLayout>

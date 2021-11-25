@@ -116,7 +116,7 @@ public class Home extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
 
-                startActivity(new Intent(Home.this, Searchadd.class));
+                startActivity(new Intent(Home.this, Searchadd.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 return true;
             }
         });

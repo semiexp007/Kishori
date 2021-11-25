@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,7 +43,9 @@ public class postUpdateFragment extends Fragment {
        mrecposts=view.findViewById(R.id.recpostupdate);
        mpost=new ArrayList<>();
        adapter=new showpostAdapter(getContext(),mpost);
-       mrecposts.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager manager=new LinearLayoutManager(getContext());
+       mrecposts.setLayoutManager(manager);
+       manager.setStackFromEnd(true);
        mrecposts.setHasFixedSize(true);
        mrecposts.setAdapter(adapter);
 

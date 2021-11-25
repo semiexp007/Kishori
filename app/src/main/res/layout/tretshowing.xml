@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+   android:padding="20dp"
+    android:gravity="center_horizontal">
+    <TextView
+        android:background="@color/purple_500"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Type"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        ></TextView>
+    <TextView
+        android:id="@+id/Type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Symptoms"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        ></TextView>
+    <TextView
+        android:id="@+id/symp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Treatment"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        ></TextView>
+    <TextView
+        android:id="@+id/treatment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </TextView>
+
+
+</LinearLayout>

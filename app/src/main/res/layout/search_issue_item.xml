@@ -31,6 +31,7 @@
 
             </TextView>
             <ImageView
+
                 android:id="@+id/addbtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -38,6 +39,14 @@
                 android:src="@drawable/ic_baseline_add_circle_outline_24">
 
             </ImageView>
+           <Spinner
+               android:visibility="gone"
+            android:id="@+id/spinner1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+               android:background="@drawable/ic_baseline_add_circle_outline_24"
+
+            android:spinnerMode="dropdown"/>
 
         </LinearLayout>
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.OnDisconnect;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.uietsocial.kishori.fragments.aboutFragment;
 import com.uietsocial.kishori.fragments.chats;
 import com.uietsocial.kishori.fragments.chats2;
 import com.uietsocial.kishori.fragments.facultyProfile;
@@ -83,6 +85,21 @@ Fragment selected;
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.amenu, menu);
+        MenuItem menuItem2=menu.findItem(R.id.about);
 
 
+        menuItem2.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container2, new aboutFragment()).commit();
+
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
 }
